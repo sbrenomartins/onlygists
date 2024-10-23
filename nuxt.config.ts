@@ -11,14 +11,17 @@ export default defineNuxtConfig({
     fontsDir: 'assets/fonts',
     overwriting: true,
     families: {
-      Inter: [300, 500, 800]
-    }
+      Inter: [300, 500, 800],
+    },
   },
   primevue: {
     options: { unstyled: true },
     importPT: {
       as: 'lara',
-      from: path.resolve(__dirname, './assets/presets/lara/')
-    }
-  }
-})
+      from: path.resolve(__dirname, './assets/presets/lara/'),
+    },
+  },
+  imports: {
+    dirs: ['./composables/useMarkdown'],
+  },
+});
