@@ -4,11 +4,26 @@ import WidgetGroup from '@/modules/reports/components/Widget/Group/Group.vue';
 import WidgetGroupLoader from '@/modules/reports/components/Widget/Group/Loader.vue';
 import WidgetCondensed from '@/modules/reports/components/Widget/Condensed/Condensed.vue';
 import GistCardGroup from '@/modules/gists/components/Card/Group/Group.vue';
+import GistCardGroupLoader from '@/modules/gists/components/Card/Group/Loader.vue';
 import GistCardItem from '@/modules/gists/components/Card/Item/Item.vue';
+
+const route = useRoute();
+const router = useRouter();
+
+const handleNavigateToDetail = (id: string) => {
+  const { username } = route.params;
+  router.push(`/${username}/gist/${id}`);
+};
 </script>
 
 <template>
-  <PublicHeadline />
+  <PublicHeadline
+    name="Breno M. Silva"
+    avatarUrl="https://avatars.githubusercontent.com/u/36958762?v=4"
+    bio="Fullstack Developer - Bachelor in Information Systems"
+    city="Belo Horizonte"
+    state="MG"
+  />
 
   <WidgetGroup>
     <WidgetGroupLoader :loading="false" :amount="3">
@@ -20,10 +35,16 @@ import GistCardItem from '@/modules/gists/components/Card/Item/Item.vue';
 
   <WidgetDefault title="Todos os gists">
     <GistCardGroup>
-      <GistCardItem />
-      <GistCardItem />
-      <GistCardItem />
-      <GistCardItem />
+      <GistCardGroupLoader :loading="false">
+        <GistCardItem
+          @tap="handleNavigateToDetail"
+          id="123"
+          title="useCurrentUser.ts"
+          description="Hook para controlar a **store** do usuário"
+          :price="10"
+          lang="typescript"
+        />
+      </GistCardGroupLoader>
     </GistCardGroup>
   </WidgetDefault>
 </template>
