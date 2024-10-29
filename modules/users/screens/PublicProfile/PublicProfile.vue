@@ -7,8 +7,8 @@ import GistCardGroup from '@/modules/gists/components/Card/Group/Group.vue';
 import GistCardGroupLoader from '@/modules/gists/components/Card/Group/Loader.vue';
 import GistCardItem from '@/modules/gists/components/Card/Item/Item.vue';
 
-const route = useRoute();
-const router = useRouter();
+const route = useRoute(); // propriedades (p.e: params, query params)
+const router = useRouter(); // comportamento (p.e: redirecionar para outra rota)
 
 const handleNavigateToDetail = (id: string) => {
   const { username } = route.params;
@@ -37,6 +37,8 @@ const handleNavigateToDetail = (id: string) => {
     <GistCardGroup>
       <GistCardGroupLoader :loading="false">
         <GistCardItem
+          v-for="n in 4"
+          key="n"
           @tap="handleNavigateToDetail"
           id="123"
           title="useCurrentUser.ts"
