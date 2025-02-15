@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Loader from './Loader.vue';
 import { common, createStarryNight } from '@wooorm/starry-night';
 import { toHtml } from 'hast-util-to-html';
 import '@wooorm/starry-night/style/light';
@@ -43,17 +44,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full relative" v-if="props.isPaid">
-    <span class="absolute top-[43%] left-[50%] z-[999]">
-      <i class="pi pi-lock text-3xl text-gray-700"></i>
-    </span>
+  <Loader :loading="props.loading || loading">
+    <div class="w-full relative" v-if="props.isPaid">
+      <span class="absolute top-[43%] left-[50%] z-[999]">
+        <i class="pi pi-lock text-3xl text-gray-700"></i>
+      </span>
 
-    <pre
-      :class="{ 'blur-sm': props.isPaid }"
-      class="w-full select-none rounded bg-gray-200 p-5 overflow-x-hidden"
-      v-html="htmlCode"
-    ></pre>
-  </div>
+      <pre
+        :class="{ 'blur-sm': props.isPaid }"
+        class="w-full select-none rounded bg-gray-200 p-5 overflow-x-hidden"
+        v-html="htmlCode"
+      ></pre>
+    </div>
 
-  <pre v-if="!props.isPaid" v-html="htmlCode" class="w-full rounded bg-gray-200 p-5 overflow-x-scroll"></pre>
+    <pre v-if="!props.isPaid" v-html="htmlCode" class="w-full rounded bg-gray-200 p-5 overflow-x-scroll"></pre>
+  </Loader>
 </template>
