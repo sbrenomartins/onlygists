@@ -1,0 +1,11 @@
+CREATE TABLE gists (
+  id UUID PRIMARY KEY,
+  profile_id UUID REFERENCES public.profiles(id),
+  is_paid BOOLEAN NOT NULL,
+  title VARCHAR NOT NULL,
+  description VARCHAR NOT NULL,
+  lang VARCHAR NOT NULL,
+  price INTEGER NOT NULL,
+  content TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+);

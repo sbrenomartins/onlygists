@@ -1,0 +1,6 @@
+CREATE TABLE sales (
+  id UUID PRIMARY KEY,
+  gist_id UUID REFERENCES public.gists(id),
+  customer_email VARCHAR NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
