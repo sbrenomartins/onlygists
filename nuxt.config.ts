@@ -32,4 +32,7 @@ export default defineNuxtConfig({
       siteUrl: process.env.SITE_URL,
     },
   },
+  supabase: {
+    redirect: false,
+  },
 });

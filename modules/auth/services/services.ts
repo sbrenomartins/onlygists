@@ -15,4 +15,9 @@ export default (client: SupabaseClient, options: ServiceOptions) => ({
 
     return response;
   },
+
+  async signOut() {
+    const response = await client.auth.signOut();
+    return response;
+  },
 });
